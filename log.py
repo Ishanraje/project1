@@ -17,7 +17,7 @@ def write_to_file():
     final_chars = "".join(map(str, WhatWasTyped))
     final_chars  = final_chars.replace("''", "") 
      
-    f = open("WhatTheyWrote.txt", "w")
+    f = open("res.txt", "w")
     f.write(str(final_chars))
     f.close()
 
